@@ -8,5 +8,13 @@ module.exports = {
         }).catch(err => {
             next(err)
         })
+    },
+    getList: (req,res,next)=>{
+        Article.getList().then(results=>{
+            req.articles = results
+            next()
+        }).catch(err => {
+            next(err)
+        })
     }
 }
