@@ -25,5 +25,14 @@ module.exports = {
         }).catch(err => {
             next(err)
         })
+    },
+    getListBykeywrod: (req,res,next)=>{
+        let keyword = req.query.keyword
+        Article.getListBykeywrod(keyword).then(results=>{
+            req.articles = results
+            next()
+        }).catch(err => {
+            next(err)
+        })
     }
 }

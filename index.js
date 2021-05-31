@@ -17,5 +17,7 @@ app.use(express.static('static'))
 app.use(/\/(index)?/,require('./router/index'))
 //调用文章子应用
 app.use('/article',require('./router/article'))
+//调用搜索子应用
+app.use('/search',require('./router/search'))
 
 app.listen(3000)

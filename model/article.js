@@ -38,4 +38,16 @@ module.exports= class Article extends require('./model'){
         })
     }
 
+
+    static getListBykeywrod(keyword){
+        return new Promise ((resolve,reject) =>{
+            let sql = 'SELECT id,title,content,`time`  FROM `article` WHERE title LIKE ? ORDER BY time DESC'
+            this.query(sql,`%${keyword}%`).then(results=>{
+                resolve(results)
+            }).catch(err=>{
+                console.log(`获取指定类目下的文章列表失败：${err.message}`)
+                reject(err)
+            })
+        })
+    }
 }
