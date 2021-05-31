@@ -50,4 +50,17 @@ module.exports= class Article extends require('./model'){
             })
         })
     }
+
+    static getArticleById(id){
+        return new Promise ((resolve,reject) =>{
+            let sql = 'SELECT a.id,a.title,a.content,a.time,a.hits,a.category_id,c.`name` FROM `article` a,category c WHERE a.id = ? AND a.category_id = c.id'
+            this.query(sql,id).then(results=>{
+                resolve(results[0])
+            }).catch(err=>{
+                console.log(`获取文章详情失败：${err.message}`)
+                reject(err)
+            })
+        })
+
+    }
 }

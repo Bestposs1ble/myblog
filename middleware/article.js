@@ -34,5 +34,15 @@ module.exports = {
         }).catch(err => {
             next(err)
         })
+    },
+    getArticleById: (req,res,next) =>{
+        let {id} = req.params 
+        Article.getArticleById(id).then(result =>{
+            req.article = result
+            next()
+        }).catch(err=>{
+            next(err)
+        })
     }
+
 }
