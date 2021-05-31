@@ -16,5 +16,14 @@ module.exports = {
         }).catch(err => {
             next(err)
         })
+    },
+    getListByCategoryId: (req,res,next)=>{
+        let id = req.params.id
+        Article.getListByCategoryId(id).then(results=>{
+            req.articles = results
+            next()
+        }).catch(err => {
+            next(err)
+        })
     }
 }

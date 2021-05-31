@@ -24,5 +24,18 @@ module.exports= class Article extends require('./model'){
             })
         })
     }
-    
+
+
+    static getListByCategoryId(id){
+        return new Promise ((resolve,reject) =>{
+            let sql = 'SELECT id,title,content,`time` FROM `article` WHERE category_id = ? ORDER BY time DESC'
+            this.query(sql,id).then(results=>{
+                resolve(results)
+            }).catch(err=>{
+                console.log(`获取指定类目下的文章列表失败：${err.message}`)
+                reject(err)
+            })
+        })
+    }
+
 }

@@ -1,4 +1,4 @@
-const { static } = require('express')
+
 const express = require('express')
 
 const app = express()
@@ -15,5 +15,7 @@ app.use(express.static('static'))
 
 //调用首页子应用
 app.use(/\/(index)?/,require('./router/index'))
+//调用文章子应用
+app.use('/article',require('./router/article'))
 
 app.listen(3000)
