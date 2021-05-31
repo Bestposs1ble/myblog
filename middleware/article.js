@@ -1,4 +1,5 @@
 const Article = require('../model/article')
+const Tab = require('../model/tab')
 
 module.exports = {
     getHot: (req,res,next) => {
@@ -36,9 +37,18 @@ module.exports = {
         })
     },
     getArticleById: (req,res,next) =>{
-        let {id} = req.params 
+        let id = req.params.id 
         Article.getArticleById(id).then(result =>{
             req.article = result
+            next()
+        }).catch(err=>{
+            next(err)
+        })
+    },
+    getTabs:(req,res,next)=>{
+        let id = req.params.id 
+        Tab.getListByArticleId(id).then(results =>{
+            req.tabs = results
             next()
         }).catch(err=>{
             next(err)
