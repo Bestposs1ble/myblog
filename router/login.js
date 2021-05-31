@@ -10,9 +10,10 @@ loginApp.get('/',(req,res)=>{
 
 loginApp.post('/',(req,res,next)=>{
     let {username,password} = req.body
-    User.login(username,password).then(result=>{
+    User.login(username,password).then(result => {
         if(result){
-        res.redirect('/')
+            req.session.user = result
+            res.redirect('/')
         }else{
             res.render('/login',{msg:'登入失败！用户名或者密码错误'})
         }
