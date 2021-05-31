@@ -63,4 +63,30 @@ module.exports= class Article extends require('./model'){
         })
 
     }
+
+    static getPrevArticle(id){
+        return new Promise ((resolve,reject) =>{
+            let sql = 'SELECT id,title FROM `article` WHERE id < ? ORDER BY id DESC LIMIT 1'
+            this.query(sql,id).then(results=>{
+                resolve(results[0])
+            }).catch(err=>{
+                console.log(`上一篇文章失败：${err.message}`)
+                reject(err)
+            })
+        })
+
+    }
+
+    static getNextArticle(id){
+        return new Promise ((resolve,reject) =>{
+            let sql = 'SELECT id,title FROM `article` WHERE id > ? ORDER BY id ASC LIMIT 1'
+            this.query(sql,id).then(results=>{
+                resolve(results[0])
+            }).catch(err=>{
+                console.log(`下一篇文章失败：${err.message}`)
+                reject(err)
+            })
+        })
+
+    }
 }
