@@ -18,5 +18,13 @@ module.exports = {
         }).catch(err => {
             next(err)
         })
+    },
+    getCount:(req,res,next)=>{
+        Category.getCount().then(results =>{
+            req.categoryCount = results
+            next()
+        }).catch(err=>{
+            next(err)
+        })
     }
 }

@@ -89,4 +89,17 @@ module.exports= class Article extends require('./model'){
         })
 
     }
+
+    static getCount(id){
+        return new Promise ((resolve,reject) =>{
+            let sql = 'SELECT COUNT(1) AS count FROM `article`'
+            this.query(sql).then(results=>{
+                resolve(results[0].count)
+            }).catch(err=>{
+                console.log(`获取总博文数失败：${err.message}`)
+                reject(err)
+            })
+        })
+
+    }
 }
