@@ -31,6 +31,13 @@ app.use('/search',require('./router/search'))
 //调用登入子应用
 app.use('/login',require('./router/login'))
 
+
+//进入后台权限验证
+app.use('/admin/?*',require('./middleware/auth').allowToAdmin)
+//调用后台首页
+app.use(/\/admin\/(index)?/,require('./router/admin/index'))
+
+
 //退出
 app.get('/user/logout',(req,res) => {
     req.session.user = null
