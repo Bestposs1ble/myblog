@@ -79,6 +79,14 @@ module.exports = {
         }).catch(err=>{
             next(err)
         })
+    },
+    getPage: (req,res,next)=>{
+        Article.getPage().then(results=>{
+            req.pageList = results
+            next()
+        }).catch(err => {
+            next(err)
+        })
     }
 
 }

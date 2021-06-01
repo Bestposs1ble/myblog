@@ -9,5 +9,13 @@ module.exports = {
         }).catch(err=>{
             next(err)
         })
+    },
+    getAll:(req,res,next)=>{
+        Pv.getAll().then(results=>{
+            req.pvs = results
+            next()
+        }).catch(err=>{
+            next(err)
+        })
     }
 }

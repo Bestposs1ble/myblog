@@ -14,4 +14,16 @@ module.exports= class PV extends require('./model'){
         })
     }
 
+    static getAll() {
+        return new Promise((resolve, reject) => {
+            let sql = 'SELECT `time`,hits FROM `pv`  ORDER BY `time` ASC'
+            this.query(sql).then(results => {
+                resolve(results)
+            }).catch(err => {
+                console.log(`获取全部访问量失败：${err.message}`)
+                reject(err)
+            })
+        })
+    }
+
 }

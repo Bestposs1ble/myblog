@@ -1,5 +1,5 @@
 if ($('#g2_container').length) {
-    let url = 'pv.json'
+    let url = '/admin/index/pvs'
 
     const sliderDiv = document.createElement('div');
     sliderDiv.id = 'slider';
@@ -96,7 +96,7 @@ if ($('#editor').length) {
         .create(document.querySelector('#editor'), {
             language: 'zh-cn',
             ckfinder: {
-                uploadUrl: '/topic/upload'
+                uploadUrl: '/admin/article/ckeditor'
             }
         })
         .catch(error => {
