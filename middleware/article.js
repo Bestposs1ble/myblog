@@ -81,7 +81,7 @@ module.exports = {
         })
     },
     getPage: (req,res,next)=>{
-        Article.getPage().then(results=>{
+        Article.getPage(res.start,res.size).then(results=>{
             req.pageList = results
             next()
         }).catch(err => {

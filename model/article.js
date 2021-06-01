@@ -103,13 +103,13 @@ module.exports= class Article extends require('./model'){
 
     }
 
-    static getPage(){
+    static getPage(start, size){
         return new Promise ((resolve,reject) =>{
-            let sql = 'SELECT id,title,`thumbnail`,hot FROM `article` ORDER BY `time` DESC'
-            this.query(sql).then(results=>{
+            let sql = 'SELECT id,title,`thumbnail`,hot FROM `article` ORDER BY `time` DESC LIMIT ?,?'
+            this.query(sql,[start,size]).then(results=>{
                 resolve(results)
             }).catch(err=>{
-                console.log(`获取文章列表失败：${err.message}`)
+                console.log(`获取指定页文章列表失败：${err.message}`)
                 reject(err)
             })
         })

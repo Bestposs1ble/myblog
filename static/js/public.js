@@ -9,3 +9,4 @@ if ($('.badge').length) {
         $(this).addClass('badge-' + ['primary', 'secondary', 'success', 'danger', 'warning', 'info', 'dark'][Math.ceil((Math.random() * 6))])
     })
 }
+
