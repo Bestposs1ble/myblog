@@ -1,10 +1,14 @@
-
+/**
+ * 用户中间件
+ */
 
 const User = require('../model/user')
 
-
 module.exports = {
-    lastLoginTime: (req,res,next) => {
+    /**
+     * 最后一次登录时间
+     */
+    lastLoginTime: (req, res, next) => {
         User.lastLoginTime().then(results=>{
             req.lastLoginTime = results
             next()
@@ -12,6 +16,4 @@ module.exports = {
             next(err)
         })
     }
-
-
 }

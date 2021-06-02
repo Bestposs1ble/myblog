@@ -23,11 +23,10 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/">首页</a>
                 </li>
-
                 <% categories.forEach(category => { %>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/article/list/<%=category.id %> "> <%= category.name %></a>
-                    </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/article/list/<%=category.id%>"><%= category.name %> </a>
+                </li>
                 <% }) %>
             </ul>
             <form class="form-inline my-2 my-lg-0 ml-5" method="get" action='/search'>
@@ -35,23 +34,21 @@
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">搜索</button>
             </form>
             <ul class="navbar-nav ml-auto">
-                <%  if(user){ %>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" data-toggle="dropdown">
-                            <%=user.username %>
-                        </a>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" href="/admin">个人中心</a>
-                            <a class="dropdown-item" href="/user/logout">退出</a>
-                        </div>
-                    </li>
+                <% if (user) { %>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" data-toggle="dropdown">
+                        <%=user.username%>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <a class="dropdown-item" href="/admin">个人中心</a>
+                        <a class="dropdown-item" href="/user/logout">退出</a>
+                    </div>
+                </li>
                 <% } else { %>
-                        <li class="nav-item">
-                            <a href="/login" class="nav-link">登录</a>
-                        </li>
+                <li class="nav-item">
+                    <a href="/login" class="nav-link">登录</a>
+                </li>
                 <% } %>
-                
-                
             </ul>
         </div>
     </nav>
